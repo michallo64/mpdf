@@ -11743,7 +11743,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 	/* -- TABLES -- */
 	function TableHeaderFooter($content = '', $tablestartpage = '', $tablestartcolumn = '', $horf = 'H', $level = 0, $firstSpread = true, $finalSpread = true)
 	{
-		if (($horf == 'H' || $horf == 'F') && !empty($content)) { // mPDF 5.7.2
+		if (($horf == 'H' || $horf == 'F') && !empty($content) && !empty($content[0])) { // mPDF 5.7.2
 			$table = &$this->table[1][1];
 
 			// mPDF 5.7.2
