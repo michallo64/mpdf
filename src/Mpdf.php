@@ -11784,6 +11784,10 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			for ($i = $firstrow; $i <= $lastrow; $i++) {
 				$y = $this->y;
 
+                if(empty($content[$i])){
+                    continue;
+                }
+
 				/* -- COLUMNS -- */
 				// If outside columns, this is done in PaintDivBB
 				if ($this->ColActive) {
