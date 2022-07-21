@@ -1,0 +1,25 @@
+From 2724678b307f6b4c0f906f5b247e1586f219e129 Mon Sep 17 00:00:00 2001
+From: Michal Podrouzek <michal.podrouzek@devsk.io>
+Date: Thu, 21 Jul 2022 13:46:31 +0200
+Subject: [PATCH 1/1] [FIX] fixed content throwing error in foreach
+
+---
+ src/Mpdf.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Mpdf.php b/src/Mpdf.php
+index a54b829..4419ffa 100644
+--- a/src/Mpdf.php
++++ b/src/Mpdf.php
+@@ -11743,7 +11743,7 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
+ 	/* -- TABLES -- */
+ 	function TableHeaderFooter($content = '', $tablestartpage = '', $tablestartcolumn = '', $horf = 'H', $level = 0, $firstSpread = true, $finalSpread = true)
+ 	{
+-		if (($horf == 'H' || $horf == 'F') && !empty($content)) { // mPDF 5.7.2
++		if (($horf == 'H' || $horf == 'F') && !empty($content) && !empty($content[0])) { // mPDF 5.7.2
+ 			$table = &$this->table[1][1];
+ 
+ 			// mPDF 5.7.2
+-- 
+2.32.0 (Apple Git-132)
+
